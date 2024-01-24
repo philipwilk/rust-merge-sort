@@ -12,8 +12,8 @@ fn join(mut left: Vec<i32>, right: Vec<i32>) -> Vec<i32> {
 
 async fn mergeSort(mut input: Vec<i32>) -> Vec<i32> {
     if input.len() > 1 {
-        let mut right: Vec<i32> = input.split_off(input.len()+1 /2);
-        let mut left: Vec<i32> = input;
+        let right: Vec<i32> = input.split_off(input.len()+1 /2);
+        let left: Vec<i32> = input;
         let mut taskSet = JoinSet::new();
         taskSet.spawn(mergeSort(left));
         taskSet.spawn(mergeSort(right));
